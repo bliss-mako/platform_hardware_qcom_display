@@ -4,6 +4,10 @@ display-hals := include libqservice libqdutils $(sdm-libs)/utils $(sdm-libs)/cor
 ifneq ($(TARGET_IS_HEADLESS), true)
     display-hals += libcopybit liblight libmemtrack hdmi_cec \
                     $(sdm-libs)/hwc2 gpu_tonemapper libdrmutils
+
+ifneq ($(TARGET_PROVIDES_LIBLIGHT),true)
+    display-hals += liblight
+endif
 endif
 
 display-hals += libgralloc1
